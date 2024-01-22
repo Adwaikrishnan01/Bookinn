@@ -2,7 +2,7 @@
 
 import useLoginModal from '../../hooks/useLoginModel';
 import { useForm,SubmitHandler } from "react-hook-form";
-import API from '../../API';
+import { useSession, signIn, signOut } from "next-auth/react";
 type FormValues = {
  email: string
   password: string
@@ -15,16 +15,8 @@ const LoginModel = () => {
    
     const onSubmit: SubmitHandler<FormValues>=(fdata)=>{
       console.log("formn sutted",fdata)
-    API.post("/api/v1/login",fdata).then((callback)=>{
-      if(callback?.data.token){
-      alert("logged in")
-      }else{
-        alert(callback?.data.message)
-      }
-      loginModel.onClose()
-     
-    })
-   
+    
+    
   }
       
       

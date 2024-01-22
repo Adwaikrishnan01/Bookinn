@@ -1,6 +1,7 @@
 import useLoginModal from '../../hooks/useLoginModel';
 import { useForm,SubmitHandler } from "react-hook-form";
-import API from '../../API';
+import { useSession, signIn, signOut } from "next-auth/react";
+
 type FormValues = {
  email: string
   password: string
