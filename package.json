@@ -11,7 +11,9 @@
   "dependencies": {
     "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@prisma/client": "^5.8.1",
+    "@types/bcrypt": "^5.0.2",
     "antd": "^5.9.4",
+    "bcrypt": "^5.1.1",
     "icons": "^1.0.0",
     "next": "latest",
     "nextjs-google-fonts": "^3.4.0",

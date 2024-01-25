@@ -1,16 +1,19 @@
-import Image from 'next/image'
+"use client";
+
 import Navbar from './components/Navbar/Navbar'
-import Model from './components/Model'
+import RegisterModal from './components/modal/RegisterModal'
+import LoginModal from './components/modal/LoginModal'
+import { useSession } from 'next-auth/react';
+import { SessionProvider } from 'next-auth/react';
 export default function Home() {
-
-
-  return (<> 
-  <Navbar/>
-  <div className="text-slate-700 text-2xl">BookInngmkhetzhtehtjtjkry
-  </div>
-  <Model isOpen/>
   
-        </>
+  return (<> <SessionProvider >
+  <Navbar/>
+  <div className="text-slate-700 text-2xl">BookInnd
+  </div>
+    <RegisterModal/>
+    <LoginModal/> </SessionProvider>
+    </>
     
   )
 }

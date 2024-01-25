@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
+import bcrypt from "bcrypt"
 
 const prisma = new PrismaClient()
 
@@ -40,21 +41,31 @@ export default NextAuth({
         );
 
         if (!isCorrectPassword) {
-          throw new Error('Invalid credentials');
+          throw new Error('Incorrect password');
         }
 
         return user;
       }
     })
   ],
-  pages: {
-    signIn: '/',
-  },
-  debug: process.env.NODE_ENV === 'development',
-  session: {
-    strategy: "jwt",
-  },
-  secret: process.env.NEXTAUTH_SECRET,
+  // pages: {              //if not authorized redirected to pages
+  //   signIn: '/',
+  // },
+  // debug: process.env.NODE_ENV === 'development',
+  
+  // session: {
+  //   strategy: "jwt",
+  // },
+  // secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      session.user = token as any;
+      return session;
+    },
+  }
 })
 
 

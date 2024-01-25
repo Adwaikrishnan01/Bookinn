@@ -1,27 +1,29 @@
 "use client";
 
-import useLoginModal from '../../hooks/useLoginModel';
-import { useForm,SubmitHandler } from "react-hook-form";
+import useLoginModal from '../../hooks/useLoginModal';
+import { useForm,SubmitHandler} from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react";
+import axios from "../../../axios"
+
 type FormValues = {
- email: string
+  email: string
   password: string
 }
 
-const LoginModel = () => {
-    const loginModel=useLoginModal()
+const LoginModal = () => {
+    const loginModal=useLoginModal()
     const { register, handleSubmit ,formState: { errors } } = useForm<FormValues>()
-    console.log("modelopen",loginModel.isOpen)
+    
    
     const onSubmit: SubmitHandler<FormValues>=(fdata)=>{
-      console.log("formn sutted",fdata)
-    
-    
+      console.log("fdatalogin",fdata)
+      signIn('credentials',{...fdata}).then((response:any)=>{
+        console.log("login res",response)
+      })                      //uses authorize merthord from nextauth.ts 
+      
   }
-      
-      
-    
-    if(!loginModel.isOpen){
+
+    if(!loginModal.isOpen){
       return null
     }
 
@@ -53,7 +55,7 @@ const LoginModel = () => {
           <form className="bg-white p-8 shadow-md rounded-md w-full max-w-md" 
           onSubmit={handleSubmit(onSubmit)}>
             <h2 className="text-2xl font-bold mb-6 flex justify-between">login
-            <span className="text-red-800 text-sm" onClick={loginModel.onClose}>X</span></h2>
+            <span className="text-red-800 text-sm" onClick={loginModal.onClose}>X</span></h2>
           
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -102,4 +104,4 @@ const LoginModel = () => {
   )
 }
 
-export default LoginModel
+export default LoginModal
