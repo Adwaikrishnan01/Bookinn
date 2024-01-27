@@ -3,7 +3,7 @@
 import useRegisterModal from '../../hooks/useRegisterModal';
 import {FieldValues, useForm,SubmitHandler } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub ,AiFillGoogleCircle} from "react-icons/ai";
 import axios from "../../../axios"
 import Button from '../Button';
 
@@ -100,6 +100,8 @@ const RegisterModal = () => {
              <Button onClick={()=>{}} label={"Register"} />
              <Button icon={AiFillGithub} label={"Sign in with github"} 
                onClick={() => signIn('github')} outline/>
+                        <Button icon={AiFillGoogleCircle} label={"Sign in with google"} 
+               onClick={() => signIn('google')} outline/>
           </form>
         </div>
       </div>

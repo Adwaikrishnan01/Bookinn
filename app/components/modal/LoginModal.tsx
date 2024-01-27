@@ -3,7 +3,8 @@
 import useLoginModal from '../../hooks/useLoginModal';
 import { useForm,SubmitHandler} from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react";
-import axios from "../../../axios"
+import { AiFillGithub,AiFillGoogleCircle } from "react-icons/ai";
+import Button from '../Button';
 
 type FormValues = {
   email: string
@@ -97,6 +98,10 @@ const LoginModal = () => {
             >
               login
             </button>
+            <Button icon={AiFillGithub} label={"Sign in with github"} 
+               onClick={() => signIn('github')} outline/>
+                <Button icon={AiFillGoogleCircle} label={"Sign in with google"} 
+               onClick={() => signIn('google')} outline/>
           </form>
         </div>
       </div>

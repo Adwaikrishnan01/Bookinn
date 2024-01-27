@@ -24,7 +24,7 @@ const UserMenu:React.FC<UserMenu> = ({user}) => {
             {user && <p>Hello {user?.name}</p>}
        <AiOutlineMenu/>
         <Image className="rounded-full hidden md:block"
-        height="30" width="30" alt="avatar" src="/avatar.png"/>
+        height="30" width="30" alt="avatar"  src={user?user.image:"/avatar.png"}/>
         {open&& <div className='absolute
             rounded-md
             shadow-md
