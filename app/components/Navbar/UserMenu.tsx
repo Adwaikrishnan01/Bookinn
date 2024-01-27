@@ -5,18 +5,23 @@ import Image from 'next/image'
 import MenuItem from './MenuItem'
 import useRegisterModal from '../../hooks/useRegisterModal';
 import useLoginModal from '../../hooks/useLoginModal'
-import { useSession } from 'next-auth/react';
-const UserMenu = () => {
+import { User } from '@prisma/client'
+import { signOut } from "next-auth/react"
+type UserMenu={
+  user?:User | null;
+}
+
+const UserMenu:React.FC<UserMenu> = ({user}) => {
   const [open,setOpen]=useState(false);
   const registerModal=useRegisterModal()
   const loginModal=useLoginModal()
-  const { data: session, status } = useSession();
-  console.log("user in seeeion",session)
+
   return (
     <div className='border-[1px] border-neutral-200 p-4 relative
     rounded-md flex flex-row items-center gap-3 cursor-pointer md:px-2 md:py-1
      hover:shadow-md transition
           ' onClick={()=>{setOpen(!open)}}>
+            {user && <p>Hello {user?.name}</p>}
        <AiOutlineMenu/>
         <Image className="rounded-full hidden md:block"
         height="30" width="30" alt="avatar" src="/avatar.png"/>
@@ -32,8 +37,14 @@ const UserMenu = () => {
             text-sm'>
                 <div className='flex flex-col cursor-pointer'>
                   <>  
-                  <MenuItem onClick={registerModal.onOpen} label="Register"/>
-                  <MenuItem onClick={loginModal.onOpen} label="Login"/>
+                  {user ? (<><MenuItem onClick={()=>{}} label="My bookings"/>
+                  <MenuItem onClick={()=>{}} label="Favourites"/><hr/>
+                  <MenuItem onClick={()=>{signOut()}} label="SignOut"/></>
+                  )
+
+                  :(<><MenuItem onClick={registerModal.onOpen} label="Register"/>
+                  <MenuItem onClick={loginModal.onOpen} label="Login"/></>)
+                  }
                   </>
                 </div>
                 </div>

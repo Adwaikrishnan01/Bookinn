@@ -3,7 +3,9 @@
 import useRegisterModal from '../../hooks/useRegisterModal';
 import {FieldValues, useForm,SubmitHandler } from "react-hook-form";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { AiFillGithub } from "react-icons/ai";
 import axios from "../../../axios"
+import Button from '../Button';
 
 const RegisterModal = () => {
     const registerModal=useRegisterModal()
@@ -95,13 +97,9 @@ const RegisterModal = () => {
                   
                 />{errors && (<p className="text-red-500">{"Error in password"}</p>)}
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white p-2 rounded-md w-full
-               hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-            >
-              Register
-            </button>
+             <Button onClick={()=>{}} label={"Register"} />
+             <Button icon={AiFillGithub} label={"Sign in with github"} 
+               onClick={() => signIn('github')} outline/>
           </form>
         </div>
       </div>
