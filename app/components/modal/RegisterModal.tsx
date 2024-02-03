@@ -6,8 +6,10 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { AiFillGithub ,AiFillGoogleCircle} from "react-icons/ai";
 import axios from "../../../axios"
 import Button from '../Button';
+import { useSearchParams } from 'next/navigation';
 
 const RegisterModal = () => {
+ 
     const registerModal=useRegisterModal()
     const { register, handleSubmit ,formState: { errors } } = useForm<FieldValues>({defaultValues: {
       name: '',
