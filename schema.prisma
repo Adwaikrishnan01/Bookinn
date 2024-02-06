@@ -55,15 +55,33 @@ model Session {
   
 }
 
+model Room{
+   id             String @id @default(auto()) @map("_id") @db.ObjectId
+  name         String  
+  descriptions  String
+  petsallowed      Boolean
+  roomCount          Int
+  bathroomCount     Int
+  guestCount         Int
+  numberofBeds       Int
+  imageSrc           String
+  rating             Int
+  airConditioned     Boolean
+
+ booking Bookings[]
+}
+
 model Bookings {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId String @db.ObjectId
+  roomId String @db.ObjectId
   startDate DateTime
   endDate DateTime
   totalPrice Int
   createdAt DateTime @default(now())
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
+ room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
 }
 
 
