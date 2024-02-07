@@ -56,9 +56,9 @@ model Session {
 }
 
 model Room{
-   id             String @id @default(auto()) @map("_id") @db.ObjectId
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
   name         String  
-  descriptions  String
+  description  String
   petsallowed      Boolean
   roomCount          Int
   bathroomCount     Int
@@ -67,8 +67,19 @@ model Room{
   imageSrc           String
   rating             Int
   airConditioned     Boolean
+  locationValue      String
 
- booking Bookings[]
+  address Address[]
+  booking Bookings[]
+}
+
+model Address{
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  country  String
+  state    String
+  city     String
+  roomId     String @db.ObjectId
+  room Room @relation(fields: [roomId], references: [id])  
 }
 
 model Bookings {

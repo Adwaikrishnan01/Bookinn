@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt"
 
 const prisma = new PrismaClient()
-export async function POST(req:Request)
+export async function POST(req:Request) 
 //{
 //  const {email,name,password}=await req.body
 //  const hashedPassword = await bcrypt.hash(password, 12);
