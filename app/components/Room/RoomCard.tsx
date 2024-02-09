@@ -1,11 +1,18 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { Roomdata ,currUser} from "@/app/types/intex";
 
-const RoomCard = (room:any) => {
+interface Roomcardprops{
+  data:Roomdata;
+  user?:currUser | null
+}
+
+const RoomCard:React.FC<Roomcardprops> = ({data,user}) => { 
+  console.log("8347",data)
 const router=useRouter();
   return (
     <div 
-    onClick={() => router.push(``)} 
+    onClick={() => router.push(`/rooms/${data.id}`)} 
     className="cursor-pointer"
   >
     <div className="flex flex-col gap-2 w-full bg-slate-300">
@@ -20,11 +27,10 @@ const router=useRouter();
       alt="Card Image"
     />
     <div className="p-4">
-      <h2 className="text-xl font-semibold text-gray-800">{room.name}</h2>
-      <p className="mt-2 text-gray-600">khgkaebgkeg</p>
-      <div className="mt-4 flex justify-between">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Action 1</button>
-        <button className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md">Action 2</button>
+      <h2 className="text-xl font-semibold text-gray-800">{data.name}</h2>
+      <p className="mt-2 text-gray-600">{data.description.substring(0, 15)}</p>
+      <div className="mt-1 text-lg">
+       price
       </div>
     </div>
   </div></div></div>

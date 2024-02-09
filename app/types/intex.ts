@@ -1,4 +1,10 @@
-import { User } from "@prisma/client";
+import { User,Room } from "@prisma/client";
 
-type currUser=
+export type currUser=
     User
+
+
+
+export type Roomdata=Room
+
+    
