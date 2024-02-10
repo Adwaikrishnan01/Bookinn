@@ -1,10 +1,9 @@
 
 const RoomPage = () => {
-  return (<> 
-  
-  
-  
-    </>
+  return (
+  <> 
+      
+  </>
    
   )
 }

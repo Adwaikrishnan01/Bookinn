@@ -10,18 +10,17 @@ export async function POST(
     const body = await request.json();
     const { 
         name,
-        descriptions,
+        description,
         petsallowed,
         roomCount,
         bathroomCount,
-        guestCount,
         numberofBeds,
         price,
-        imageSrc,
+        imgSrc,
         rating,
         airConditioned,
         address,
-        locationValue,
+      
      } = body;
   
     Object.keys(body).forEach((value: any) => {
@@ -33,18 +32,17 @@ export async function POST(
     const room = await prisma.room.create({
       data: {
         name,
-        descriptions,
+        description,
         petsallowed,
         roomCount,
         bathroomCount,
-        guestCount,
         numberofBeds,
-        price: parseInt(price, 10),
-        imageSrc,
+        price,
+        imgSrc,
         rating,
         airConditioned,
         address,
-        locationValue,
+        
         
       }
     });

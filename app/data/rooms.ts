@@ -10,6 +10,7 @@ const rooms=[
          "imgSrc":"",
          "rating":4.3,
          "airConditioned":true,
+         "price":17,    
          "address":{
             "City": "New York",
             "State": "NY",
@@ -27,6 +28,7 @@ const rooms=[
          "imgSrc":"",
          "rating":3.3,
          "airConditioned":false,
+         "price":12,    
          "address":{
             "City": "6910 Fayetteville Rd",
             "State": "Durham",
@@ -44,6 +46,7 @@ const rooms=[
          "imgSrc":"",
          "rating":4.5,
          "airConditioned":true,
+         "price":22,    
          "address":{
             "City": "Bothell",
             "State": "WA",

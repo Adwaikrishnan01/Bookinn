@@ -61,13 +61,11 @@ model Room{
   description  String
   petsallowed      Boolean
   roomCount          Int
-  bathroomCount     Int
-  guestCount         Int
+  bathroomCount      Int
   numberofBeds       Int
-  imageSrc           String
+  imgSrc           String
   rating             Int
   airConditioned     Boolean
-  locationValue      String
   price              Int
   
   address Address[]

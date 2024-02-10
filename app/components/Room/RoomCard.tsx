@@ -33,7 +33,9 @@ const router=useRouter();
        price
       </div>
     </div>
-  </div></div></div>
+   </div>
+  </div>
+ </div>
     
   )
 }
