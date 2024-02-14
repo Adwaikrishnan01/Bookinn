@@ -19,7 +19,9 @@ export async function POST(
         imgSrc,
         rating,
         airConditioned,
-        address,
+        address:{
+          city,state,country
+        }
       
      } = body;
   
@@ -41,7 +43,9 @@ export async function POST(
         imgSrc,
         rating,
         airConditioned,
-        address,
+        address:{
+         city,state,country
+        }
         
         
       }

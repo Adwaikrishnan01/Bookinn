@@ -27,8 +27,9 @@ const router=useRouter();
       alt="Card Image"
     />
     <div className="p-4">
-      <h2 className="text-xl font-semibold text-gray-800">{data.name}</h2>
-      <p className="mt-2 text-gray-600">{data.description.substring(0, 15)}</p>
+      <h2 className="text-xl font-semibold text-gray-800">{data?.name}</h2>
+     
+      <p className="mt-2 text-gray-600">{data.description?.substring(0,25)}...</p>
       <div className="mt-1 text-lg">
        price
       </div>

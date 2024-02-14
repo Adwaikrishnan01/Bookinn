@@ -79,7 +79,7 @@ model Address{
   city     String
   roomId     String @db.ObjectId
   room Room @relation(fields: [roomId], references: [id])  
-}
+}   
 
 model Bookings {
   id String @id @default(auto()) @map("_id") @db.ObjectId
