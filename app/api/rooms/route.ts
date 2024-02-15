@@ -44,10 +44,12 @@ export async function POST(
         rating,
         airConditioned,
         address:{
-         city,state,country
+          create: {
+            city,
+            state,
+            country
+          }
         }
-        
-        
       }
     });
   
