@@ -1,10 +1,10 @@
 import {RoomHeader,RoomBody} from "../../components/Room/SingleRoom"
 import getRoomById from "@/app/actions/getRoomById"
 
-interface params{
+interface Params{
   RoomId:string;
 }
-const RoomPage = async ({params}:{params:params}) => {
+const RoomPage = async ({params}:{params:Params}) => {
    const room=await getRoomById(params)//get room by id 
   return (
   <> 
@@ -12,7 +12,7 @@ const RoomPage = async ({params}:{params:params}) => {
         Render all the room components here
         import curretn user reservation here 
         Can also create another client component fior display
-      </p> */}
+      </p> */} 
       <div className="flex">  
       <RoomHeader title={title}
           image={image}

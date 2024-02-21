@@ -67,6 +67,7 @@ model Room{
   rating             Int
   airConditioned     Boolean
   price              Int
+  createdAt    DateTime @default(now())
   
   address Address[]
   booking Bookings[]

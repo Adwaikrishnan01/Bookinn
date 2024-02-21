@@ -1,4 +1,3 @@
-"use client";
 
 import Navbar from './components/Navbar/Navbar'
 import RegisterModal from './components/modal/RegisterModal'
@@ -9,11 +8,22 @@ import Container from './components/Container';
 import RoomCard from './components/Room/RoomCard';
 import rooms from "./data/rooms"
 import { Roomdata } from './types/intex';
+import getAllRooms from './actions/getAllRooms'
+import { useEffect } from 'react';
 
-export default function Home() {
+
+export default async function Home() {
+
+  // useEffect(() => {
+    
+  //  const allRooms=getAllRooms()
+  //   console.log("roomsdbs",allRooms)
+  // }, [])
+  
+   const allRooms=await getAllRooms()
   
   return (<> 
-  <SessionProvider >
+ {/* <SessionProvider > */}
   <Navbar/>
  
   <div 
@@ -28,7 +38,7 @@ export default function Home() {
         </div>
     <RegisterModal/>
     <LoginModal/>
-   </SessionProvider>
+   {/* </SessionProvider> */}
     </>
     
   )

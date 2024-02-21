@@ -12,7 +12,7 @@ const RoomCard:React.FC<Roomcardprops> = ({data,user}) => {
 const router=useRouter();
   return (
     <div 
-    onClick={() => router.push(`/rooms/${data.id}`)} 
+    onClick={() => router.push(`/room/${data.id}`)} 
     className="cursor-pointer"
   >
     <div className="flex flex-col gap-2 w-full bg-slate-300">
