@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation"
 import { Roomdata ,currUser} from "@/app/types/intex";
+import { url } from "inspector";
 
 interface Roomcardprops{
   data:Roomdata;
@@ -23,7 +24,7 @@ const router=useRouter();
             rounded-xl">
     <img
       className="w-full h-40 object-cover rounded-t-lg"
-      src="/secretpoint.png"
+      src={data.imgSrc}
       alt="Card Image"
     />
     <div className="p-4">
@@ -31,7 +32,7 @@ const router=useRouter();
      
       <p className="mt-2 text-gray-600">{data.description?.substring(0,25)}...</p>
       <div className="mt-1 text-lg">
-       price
+      $ {data.price}
       </div>
     </div>
    </div>

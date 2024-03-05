@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/app/libs/prismadb";
 
-const prisma=new PrismaClient()
+
 export default async function getAllRooms(){
     
     try{
@@ -13,9 +13,13 @@ export default async function getAllRooms(){
     if(!rooms){
         return null
     } 
-    return{
-        rooms
-    }
+    const safeRooms = rooms.map((room) => ({
+        ...room,
+        createdAt: room.createdAt.toISOString(),
+      }));
+  
+      return safeRooms;
+  
     }catch(error:any){
        throw new Error(error);
     } 

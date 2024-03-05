@@ -1,19 +1,18 @@
-import { PrismaClient } from "@prisma/client"
+import prisma from "@/app/libs/prismadb";
 
 interface Params {
   roomId?: string;
 }
 
-export default async function getRoomById(
-  params: Params
-) {
-  const prisma=new PrismaClient()
+export default async function getRoomById(uid: Params)
+   {
   try {
-    const { roomId } = params;
+    console.log("???????????",uid)
+    const  roomId  = uid;
 
     const room = await prisma.room.findUnique({
       where: {
-        id: roomId,
+        id: roomId as string,
       },include:{
         address:true
       }
@@ -23,10 +22,12 @@ export default async function getRoomById(
       return null;
     }
 
-    return {
-      ...room,
-     
-    };
+    const safeRoom = {
+        ...room,
+        createdAt: room.createdAt.toISOString(),
+      };
+  
+      return safeRoom;
   } catch (error: any) {
     throw new Error(error);
   }
