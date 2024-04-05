@@ -1,6 +1,13 @@
 import { User,Room,Address } from "@prisma/client";
 
-export type currUser=User
+export type currUser=Omit<
+User,
+"createdAt" | "updatedAt" | "emailVerified"
+> & {
+createdAt: string;
+updatedAt: string;
+emailVerified: string | null;
+};
 
 export type safeRoom = Omit<Room, "createdAt"> & {
         createdAt: string; address:Address[];

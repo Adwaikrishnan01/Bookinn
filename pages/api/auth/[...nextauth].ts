@@ -1,14 +1,14 @@
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
-import bcrypt from "bcrypt"
 
-const prisma = new PrismaClient()
+import { prisma } from "@/app/libs/prismadb"
 
-export default NextAuth({
+
+export const authOptions: AuthOptions = {
+
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -39,7 +39,7 @@ export default NextAuth({
         if (!user || !user?.hashedPassword) {
           throw new Error('Invalid credentials');
         }
-
+        const bcrypt = require("bcrypt");
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
           user.hashedPassword
@@ -72,7 +72,8 @@ export default NextAuth({
   //   },
   //   secret: process.env.NEXTAUTH_SECRET,
   // }
-  })
+  }
+  export default NextAuth(authOptions);
 
 
   

@@ -1,10 +1,10 @@
-import prisma from "@/app/libs/prismadb";
+import {prisma} from "@/app/libs/prismadb";
 
 interface Params {
-  roomId?: string;
+  roomId: string;
 }
 
-export default async function getRoomById(uid: Params)
+export default async function getRoomById(uid: string)
    {
   try {
     console.log("???????????",uid)

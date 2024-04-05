@@ -9,7 +9,7 @@ interface Roomcardprops{
 }
 
 const RoomCard:React.FC<Roomcardprops> = ({data,user}) => { 
-  console.log("8347",data)
+  
 const router=useRouter();
   return (
     <div 

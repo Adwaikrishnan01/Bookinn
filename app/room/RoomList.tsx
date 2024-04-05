@@ -7,7 +7,6 @@ import getAllRooms from '../actions/getAllRooms';
 
 export const RoomList=async()=>{
   const rooms = await getAllRooms();
-  console.log("gertserver",rooms)
   return(  
   <div 
   className="pt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-3

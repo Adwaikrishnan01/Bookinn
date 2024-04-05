@@ -1,29 +1,44 @@
-// import { getServerSession } from "next-auth/next"
-// import { authOptions } from "@/pages/api/auth/[...nextauth]";
-// import { PrismaClient } from "@prisma/client"
-// const prisma=new PrismaClient()
+"use server";
+import {prisma} from "@/app/libs/prismadb";
+import { getServerSession } from "next-auth/next"
+import { NextApiRequest, NextApiResponse } from "next"
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-// export default async function getCurrentUser() {
-//     try {
-//       const session = await getServerSession(authOptions)
-  
-//       if (!session?.user?.email) {
-//         return null;
-//       }
-  
-//       const currentUser = await prisma.user.findUnique({
-//         where: {
-//           email: session.user.email as string,
-//         }
-//       });
-  
-//       if (!currentUser) {
-//         return null;
-//       }
-  
-//       return {
-//         ...currentUser}
-//       }catch(error){
-//           alert(error)
-//       }
-// }
+export async function getSession() {
+  return await getServerSession(authOptions)
+}
+
+
+export default async function getCurrentUser(){
+    
+    try{
+      
+        const session = await getSession()
+    
+        if (!session?.user?.email) {
+          return null;
+        }
+       
+        console.log("JJDFKS",session)
+       if(!session.user.email){
+        return null
+       }
+        const currentUser=await prisma.user.findUnique({
+          where:{
+            email:session?.user.email as string
+          }
+   })
+   console.log("userfoundbyemail",currentUser)
+   if(!currentUser){
+    return null
+   }
+   const safeUser = {
+    ...currentUser,
+    createdAt: currentUser.createdAt.toISOString(),
+  };
+   return safeUser
+    }catch(error:any){
+        throw new Error(error)
+    }
+   
+}
