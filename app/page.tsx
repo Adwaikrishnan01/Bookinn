@@ -6,7 +6,6 @@ const MyApp=()=> {
   
     return (<> 
      
-   
     <RoomList/>
       </> 
     )

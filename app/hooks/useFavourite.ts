@@ -1,17 +1,19 @@
 
-import { useSession } from 'next-auth/react';
 import { useCallback, useEffect, useMemo } from 'react';
 import getCurrentUser from '../actions/getCurrentUser';
 import useLoginModal from './useLoginModal';
 import axios from "../../axios"
 import { useRouter } from 'next/navigation';
-
-const useFavourite = async({roomId,currentUser}) => {
+import { currUser } from '../types/intex';
+interface uFavorite{
+  roomId:string;
+  currentUser?:currUser | null;
+}
+const useFavorite = async({roomId,currentUser}:uFavorite) => {
     const loginModal=useLoginModal()
     const router=useRouter()
-    const { data: session, status } = useSession(); 
-    const email=session?.user?.email
-    if(!email){
+    
+    if(!currentUser){
         return loginModal.onOpen()    
     }
     
@@ -22,7 +24,7 @@ const useFavourite = async({roomId,currentUser}) => {
         return list.includes(roomId);
       }, [currentUser, roomId]);
 
-    const toggleFavorite = useCallback(async(e: React.MouseEvent<HTMLDivElement>) => {
+     const toggleFavorite = useCallback(async(e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
       
         try {
@@ -52,4 +54,4 @@ const useFavourite = async({roomId,currentUser}) => {
     return {hasFavorited,toggleFavorite};
 }
  
-export default useFavourite;
+export default useFavorite;

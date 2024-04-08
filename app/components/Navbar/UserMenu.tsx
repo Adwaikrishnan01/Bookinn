@@ -7,6 +7,7 @@ import useRegisterModal from '../../hooks/useRegisterModal';
 import useLoginModal from '../../hooks/useLoginModal'
 import { User } from '@prisma/client'
 import { signOut } from "next-auth/react"
+import { useRouter } from 'next/navigation'
 type UserMenu={
   user?:User | null;
 }
@@ -15,7 +16,7 @@ const UserMenu:React.FC<UserMenu> = ({user}) => {
   const [open,setOpen]=useState(false);
   const registerModal=useRegisterModal()
   const loginModal=useLoginModal()
-
+  const router=useRouter()
   return (
     <div className='border-[1px] border-neutral-200 p-4 relative
     rounded-md flex flex-row items-center gap-3 cursor-pointer md:px-2 md:py-1
@@ -37,7 +38,7 @@ const UserMenu:React.FC<UserMenu> = ({user}) => {
             text-sm'>
                 <div className='flex flex-col cursor-pointer'>
                   <>  
-                  {user ? (<><MenuItem onClick={()=>{}} label="My bookings"/>
+                  {user ? (<><MenuItem onClick={()=>{router.push('/bookings')}} label="My bookings"/>
                   <MenuItem onClick={()=>{}} label="Favourites"/><hr/>
                   <MenuItem onClick={()=>{signOut()}} label="SignOut"/></>
                   )

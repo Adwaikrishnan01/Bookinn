@@ -1,4 +1,4 @@
-import { User,Room,Address } from "@prisma/client";
+import { User,Room,Address,Bookings } from "@prisma/client";
 
 export type currUser=Omit<
 User,
@@ -20,3 +20,12 @@ export type address={
   city:string,
   state:string
 }
+export type SafeBookings = Omit<
+  Bookings, 
+  "createdAt" | "startDate" | "endDate" | "listing"
+> & {
+  createdAt: string;
+  startDate: string;
+  endDate: string;
+  room: safeRoom;
+};

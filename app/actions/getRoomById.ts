@@ -1,8 +1,5 @@
 import {prisma} from "@/app/libs/prismadb";
 
-interface Params {
-  roomId: string;
-}
 
 export default async function getRoomById(uid: string)
    {

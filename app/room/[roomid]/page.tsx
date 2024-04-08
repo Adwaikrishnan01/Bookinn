@@ -19,21 +19,16 @@ const RoomPage = async (params:Params) => {
   const room=await getRoomById(roomId)//get room by id 
    console.log("getsingleroom",room)
   const currentUser= await getCurrentUser()
-  if(!room && !currentUser){
-    return(<h1>Loading.......</h1>)
-  }
-  return (
-  <> 
-      
-      <div className="my-2 mx-1 
-           md:mx-16 lg:mx-24"> 
+  if(room &&currentUser){
+   return (
+      <div className="my-2 mx-1 md:mx-16 lg:mx-24"> 
       <SingleRoomClient 
        room={room} 
       currentUser={currentUser}/>
      </div>
-  </>
-   
   )
+  }else{
+    return(<h1>Loading.......</h1>)}
 }
 
 export default RoomPage;

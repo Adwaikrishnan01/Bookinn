@@ -1,9 +1,14 @@
 'use client';
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import useFavourite from "../hooks/useFavourite";
+import useFavorite from "../hooks/useFavourite";
+import { currUser } from "../types/intex";
 
-const HeartButton = ({ roomId, currentUser }) => {
-  const { hasFavorited, toggleFavorite } = useFavourite({ roomId, currentUser }); //if roomid is in currentUser has favorited is true
+interface HeartButtonProps{
+  roomId:string;
+  currentUser:currUser | null;
+}
+const HeartButton:React.FC<HeartButtonProps> = ({ roomId, currentUser }) => {
+  const { hasFavorited, toggleFavorite } = useFavorite({ roomId, currentUser }); //if roomid is in currentUser hasfavorited is true
   console.log("Type of hasfavorited", hasFavorited, toggleFavorite)
   return (
     <div
