@@ -8,8 +8,9 @@ import useLoginModal from '../../hooks/useLoginModal'
 import { User } from '@prisma/client'
 import { signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
+import { currUser } from '@/app/types/intex'
 type UserMenu={
-  user?:User | null;
+  user?:any | null
 }
 
 const UserMenu:React.FC<UserMenu> = ({user}) => {
@@ -39,7 +40,7 @@ const UserMenu:React.FC<UserMenu> = ({user}) => {
                 <div className='flex flex-col cursor-pointer'>
                   <>  
                   {user ? (<><MenuItem onClick={()=>{router.push('/bookings')}} label="My bookings"/>
-                  <MenuItem onClick={()=>{}} label="Favourites"/><hr/>
+                  <MenuItem onClick={()=>{router.push('/favorites')}} label="Favourites"/><hr/>
                   <MenuItem onClick={()=>{signOut()}} label="SignOut"/></>
                   )
 

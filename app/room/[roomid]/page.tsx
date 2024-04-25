@@ -10,14 +10,14 @@ interface Params {
   };
 }
 const RoomPage = async (params:Params) => {
-  console.log("singleroomparams",params)
+
   const  {roomId}  = params.params
-  console.log("sngleroomid",roomId)
+  
   if(!roomId || typeof roomId !== 'string'){
     return
   }
   const room=await getRoomById(roomId)//get room by id 
-   console.log("getsingleroom",room)
+  
   const currentUser= await getCurrentUser()
   if(room &&currentUser){
    return (

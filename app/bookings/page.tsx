@@ -11,7 +11,7 @@ const userBookings = async() => {
  } 
  const userId=currentUser.id;
  const userBookings=await getUserBookings(userId)
-    console.log("userBookings",userBookings)
+    
     if(!userBookings){
       return null
     }

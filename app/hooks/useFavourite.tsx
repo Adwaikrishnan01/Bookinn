@@ -26,7 +26,7 @@ const useFavorite = async({roomId,currentUser}:uFavorite) => {
 
      const toggleFavorite = useCallback(async(e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
-      
+       
         try {
           let request;
           if (hasFavorited) {

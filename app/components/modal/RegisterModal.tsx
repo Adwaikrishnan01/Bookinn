@@ -16,10 +16,10 @@ const RegisterModal = () => {
       email: '',
       password: ''
     },})
-    console.log("modalopen",registerModal.isOpen)
+    
   
   const onSubmit: SubmitHandler<FieldValues>=(fdata)=>{
-      console.log("formn sutted",fdata)
+      
       axios.post('api/register', fdata)
       .then(() => {
        registerModal.onClose();

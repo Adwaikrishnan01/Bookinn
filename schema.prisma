@@ -17,8 +17,7 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  favorites    String[] @db.ObjectId
-
+  Favorite    Favorite[]
   accounts      Account[]
   sessions      Session[] 
   booking Bookings[]
@@ -60,20 +59,29 @@ model Room{
   id             String @id @default(auto()) @map("_id") @db.ObjectId
   name         String  
   description  String
-  petsallowed      Boolean
-  roomCount          Int
-  bathroomCount      Int
-  numberofBeds       Int
+  petsallowed      Boolean?
+  roomCount          Int?
+  bathroomCount      Int?
+  numberofBeds       Int?
   imgSrc           String
-  rating             Int
-  airConditioned     Boolean
+  rating             Int?
+  airConditioned     Boolean?
   price              Int
   createdAt    DateTime @default(now())
-  
+  Favorite   Favorite[]
   address Address[]
   booking Bookings[]
 }
 
+model Favorite{
+   id             String @id @default(auto()) @map("_id") @db.ObjectId
+   userId   String? @db.ObjectId
+   user User? @relation(fields: [userId], references: [id]) 
+   roomId     String? @db.ObjectId
+  room Room? @relation(fields: [roomId], references: [id])  
+
+createdAt DateTime @default(now())
+}
 model Address{
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   country  String

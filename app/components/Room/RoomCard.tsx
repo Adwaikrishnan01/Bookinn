@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { Roomdata ,currUser} from "@/app/types/intex";
+import { Roomdata ,currUser, safeRoom} from "@/app/types/intex";
 import { url } from "inspector";
 
 interface Roomcardprops{
@@ -16,21 +16,21 @@ const router=useRouter();
     onClick={() => router.push(`/room/${data.id}`)} 
     className="cursor-pointer"
   >
-    <div className="flex flex-col gap-2 w-full bg-slate-300">
+    <div className="flex flex-col gap-2 w-full bg-slate-300 rounded-md">
       <div className="aspect-square 
             w-full 
             relative 
             overflow-hidden 
-            rounded-xl">
+            rounded-md">
     <img
-      className="w-full h-40 object-cover rounded-t-lg"
+      className="w-full h-40 object-cover rounded-t-md"
       src={data.imgSrc}
       alt="Card Image"
     />
     <div className="p-4">
       <h2 className="text-xl font-semibold text-gray-800">{data?.name}</h2>
      
-      <p className="mt-2 text-gray-600">{data.description?.substring(0,25)}...</p>
+      <p className="mt-2 text-gray-600">{data.description?.substring(0,30)}...</p>
       <div className="mt-1 text-lg">
       $ {data.price}
       </div>

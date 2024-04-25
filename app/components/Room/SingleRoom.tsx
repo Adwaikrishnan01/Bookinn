@@ -33,9 +33,10 @@ export const RoomHeader:React.FC<RoomHeaderProps> = ({title,image,roomId,current
     <>
       <div className="flex gap-5 items-center my-3">
        <div className="text-3xl font-medium">{title}</div>
-        <div className="rounded-xl shadow-lg p-1 cursor-pointer">
-          <HeartButton roomId={roomId} currentUser={currentUser}/></div>
-    </div>
+       {currentUser?<div className="rounded-xl shadow-lg p-1 cursor-pointer">
+          <HeartButton roomId={roomId} userId={currentUser?.id}/></div>
+    :null}
+       </div> 
     
     <div className="w-3/5">
     <Image

@@ -7,7 +7,7 @@ const createBooking = async(formData:FormData) => {
         const endDate = formData.get("endDate") as string;
         const totalPrice = 100;
 
-        console.log("form data", userId, roomId, startDate, endDate);
+
 
         const data = await prisma.bookings.create({
             data: {

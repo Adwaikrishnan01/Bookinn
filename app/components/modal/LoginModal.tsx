@@ -17,9 +17,9 @@ const LoginModal = () => {
     
    
     const onSubmit: SubmitHandler<FormValues>=(fdata)=>{
-      console.log("fdatalogin",fdata)
+      
       signIn('credentials',{...fdata}).then((response:any)=>{
-        console.log("login res",response)
+      
       })                      //uses authorize merthord from nextauth.ts 
       
   }

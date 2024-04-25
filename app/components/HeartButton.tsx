@@ -1,39 +1,55 @@
 'use client';
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import useFavorite from "../hooks/useFavourite";
-import { currUser } from "../types/intex";
 
-interface HeartButtonProps{
-  roomId:string;
-  currentUser:currUser | null;
+import { currUser } from "../types/intex";
+import { Form } from "react-hook-form";
+import axios from "../../axios";
+
+interface HeartButtonProps {
+  roomId: string;
+  userId: string;
+
 }
-const HeartButton:React.FC<HeartButtonProps> = ({ roomId, currentUser }) => {
-  const { hasFavorited, toggleFavorite } = useFavorite({ roomId, currentUser }); //if roomid is in currentUser hasfavorited is true
-  console.log("Type of hasfavorited", hasFavorited, toggleFavorite)
+const HeartButton: React.FC<HeartButtonProps> = ({ roomId, userId }) => {
+  const addToFavorites = async (formData: FormData) => {
+
+    const userId = formData.get("userId") as string
+    const roomId = formData.get("roomId") as string
+    
+    await axios.post("/api/favorites", {
+      userId: userId,
+      roomId: roomId,
+    }).then(() => {
+      alert("added to favorites")
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }
+
   return (
-    <div
-      onClick={toggleFavorite}
-      className="
-          relative
+    <form action={addToFavorites}>
+
+      <div className="relative
           hover:opacity-80
           transition
           cursor-pointer">
-      <AiOutlineHeart
-        size={28}
-        className="
+        <input type="hidden" name="roomId" value={roomId} />
+        <input type="hidden" name="userId" value={userId} />
+        <button type="submit">
+        <AiOutlineHeart
+          size={28}
+          className="
             fill-white
             absolute
             -top-[2px]
-            -right-[2px]
-          "
-      />
-      <AiFillHeart
-        size={24}
-        className={
-          hasFavorited ? 'fill-red-500' : 'fill-neutral-500/70'
-        }
-      />
-    </div>
+            -right-[2px]"/>
+        <AiFillHeart
+          size={24}
+          className={
+            'fill-red-500'} /></button>
+      </div></form>
+
   );
 }
 

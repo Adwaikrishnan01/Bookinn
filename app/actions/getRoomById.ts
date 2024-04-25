@@ -4,7 +4,7 @@ import {prisma} from "@/app/libs/prismadb";
 export default async function getRoomById(uid: string)
    {
   try {
-    console.log("???????????",uid)
+   
     const  roomId  = uid;
 
     const room = await prisma.room.findUnique({
@@ -29,3 +29,4 @@ export default async function getRoomById(uid: string)
     throw new Error(error);
   }
 }
+
