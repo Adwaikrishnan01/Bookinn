@@ -35,7 +35,7 @@ export async function removeFavoriteItem(uId:string,user:string){
             userId:user,
             roomId:uId
             }
-        })
+        }) 
     }catch(error){
         console.log(error)
     }
