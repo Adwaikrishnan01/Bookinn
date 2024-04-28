@@ -21,7 +21,7 @@ const FavoritesClient = ({data,currentUser}:any) => {
                     (<div className="pt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-3
                     lg:grid-cols-4 2xl:grid-cols-6 gap-8">
                         {
-                            data.map((item: any) => (<div>
+                            data.map((item: any,index:number) => (<div key={index}>
                                 <RoomCard key={item?.id}
                                     data={item} />
                                     <div className="w-full bg-red-500 rounded-md mt-1 py-2 cursor-pointer hover:opacity-90" 

@@ -17,8 +17,8 @@ const BookingClient:React.FC<BookingClientProps> =({userBookings}) => {
                     your bookings is empty</h2>) :( 
                     <div className="pt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-3
                lg:grid-cols-4 2xl:grid-cols-6 gap-8">
-             {userBookings?.map((userBooking:any) => (
-             <div> 
+             {userBookings?.map((userBooking:any,index: number) => (
+             <div key={index}> 
                <RoomCard
                  key={userBooking.id}
                  data={userBooking.room}
