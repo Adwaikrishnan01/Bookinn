@@ -2,7 +2,6 @@ import getCurrentUser from "../actions/getCurrentUser";
 import getUserBookings from "../actions/getUserBookings";
 import BookingClient from "./BookingClient";
 
-
 const userBookings = async() => {
  const currentUser=await getCurrentUser()
 
@@ -16,8 +15,7 @@ const userBookings = async() => {
       return null
     }
     return ( 
-        <BookingClient
-        userBookings={userBookings}/>
+        <BookingClient userBookings={userBookings}/>
      );
 }
  

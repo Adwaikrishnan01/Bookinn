@@ -33,17 +33,17 @@ export const RoomHeader:React.FC<RoomHeaderProps> = ({title,image,roomId,current
     <>
       <div className="flex gap-5 items-center my-3">
        <div className="text-3xl font-medium">{title}</div>
-       {currentUser?<div className="rounded-xl shadow-lg p-1 cursor-pointer">
+       {currentUser&&<div className="rounded-xl shadow-lg p-1 cursor-pointer">
           <HeartButton roomId={roomId} userId={currentUser?.id}/></div>
-    :null}
+    }
        </div> 
     
-    <div className="w-3/5">
+    <div className="w-full mt-4">
     <Image
           src={image}
           width={700}
           height={400}
-          className="object-cover rounded-md"
+          className="object-cover rounded-md mx-auto"
           alt="Image"
         />
     </div>
@@ -91,25 +91,26 @@ export const RoomBody:React.FC<RoomBodyProps>=({roomcount,bathroom,numberofBeds,
 }
 
  return( 
- <div className="flex">
-      <div className="w-3/5">
-        <div className="text-xl text-bold my-2">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 md:grid md:grid-cols-12 md:gap-6 items-center pb-24 mt-8">
+      <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0">
+        <div className="text-xl text-bold my-2 text-center">
           In the city {city}, {state},
-          {country}</div> 
-      <div className="flex gap-1">
-      <div>{roomcount} rooms</div>
-          <div>{bathroom} bathrooms</div>
+          {country}</div>
+      <div className="flex gap-1 justify-center">
+        <div>{roomcount} room</div>
+          <div>{bathroom} bathroom</div>
           <div>{numberofBeds} bed</div>
+      
         </div>
       </div>
-{/* reservation how to pass function from parent to child*/}
-      <div className="w-2/5">
+
+      <div className="max-w-xl md:max-w-none md:w-full md:col-span-7 lg:col-span-6">
       <form action={createBooking}>
         <input type="hidden" name="roomId" value={roomId}/>
         <input type="hidden" name="userId" value={userId}/>
         <Calender/><div>
           {!userId ?(<>{loginModal.onOpen()}</>)  : <button type="submit" 
-          className="w-2/3 bg-blue-600 rounded-md text-white p-1 shadow-md">Make a booking</button>}
+          className="w-[340px] bg-blue-600 rounded-md text-white p-1 shadow-md">Make a booking</button>}
           </div>
         
         </form>

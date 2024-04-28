@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation"
 import { Roomdata ,currUser, safeRoom} from "@/app/types/intex";
 import { url } from "inspector";
 
+
 interface Roomcardprops{
   data:Roomdata;
   user?:currUser | null
@@ -16,7 +17,7 @@ const router=useRouter();
     onClick={() => router.push(`/room/${data.id}`)} 
     className="cursor-pointer"
   >
-    <div className="flex flex-col gap-2 w-full bg-slate-300 rounded-md">
+    <div className="flex flex-col gap-2 w-full bg-slate-300 rounded-md h-72">
       <div className="aspect-square 
             w-full 
             relative 

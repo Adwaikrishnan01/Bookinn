@@ -4,6 +4,7 @@ import SingleRoomClient from "./SingleRoomClient"
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { useSession } from 'next-auth/react';
+import Loading from "@/app/components/Loading";
 interface Params {
   params: {
     roomId: string;
@@ -19,7 +20,9 @@ const RoomPage = async (params:Params) => {
   const room=await getRoomById(roomId)//get room by id 
   
   const currentUser= await getCurrentUser()
-  if(room &&currentUser){
+  if(!room){
+    return <Loading/>
+  }
    return (
       <div className="my-2 mx-1 md:mx-16 lg:mx-24"> 
       <SingleRoomClient 
@@ -27,8 +30,7 @@ const RoomPage = async (params:Params) => {
       currentUser={currentUser}/>
      </div>
   )
-  }else{
-    return(<h1>Loading.......</h1>)}
+ 
 }
 
 export default RoomPage;

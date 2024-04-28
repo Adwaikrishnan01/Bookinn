@@ -19,10 +19,10 @@ const createBooking = async(formData:FormData) => {
             }
         });
 
-        return data; // Return the created booking data
+        return data;
     } catch (error) {
         console.error("Error creating booking:", error);
-     // Throw an error to be handled by the caller
+     
     } 
 }
 

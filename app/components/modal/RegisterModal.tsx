@@ -53,7 +53,7 @@ const RegisterModal = () => {
           <form className="bg-white p-8 shadow-md rounded-md w-full max-w-md" 
           onSubmit={handleSubmit(onSubmit)}>
             <h2 className="text-2xl font-bold mb-6 flex justify-between">Register
-            <span className="text-red-800 text-sm" onClick={registerModal.onClose}>X</span></h2>
+            <span className="text-red-800 text-sm cursor-pointer" onClick={registerModal.onClose}>X</span></h2>
           
             <div className="mb-4">
             <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">

@@ -7,7 +7,7 @@ import { User } from "@prisma/client";
 
 interface SingleRoomProps {
     room: safeRoom;
-    currentUser?:currUser;
+    currentUser?:currUser | null;
 }
 
 const SingleRoomClient: React.FC<SingleRoomProps> = ({ room, currentUser }) => {

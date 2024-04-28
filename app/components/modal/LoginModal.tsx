@@ -56,7 +56,7 @@ const LoginModal = () => {
           <form className="bg-white p-8 shadow-md rounded-md w-full max-w-md" 
           onSubmit={handleSubmit(onSubmit)}>
             <h2 className="text-2xl font-bold mb-6 flex justify-between">login
-            <span className="text-red-800 text-sm" onClick={loginModal.onClose}>X</span></h2>
+            <span className="text-red-800 text-sm cursor-pointer" onClick={loginModal.onClose}>X</span></h2>
           
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">

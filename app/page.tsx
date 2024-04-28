@@ -1,5 +1,5 @@
 
-
+import Loading from './components/Loading';
 import {RoomList} from './room/RoomList'
 
 const MyApp=()=> {
