@@ -1,10 +1,8 @@
 "use client"
 import RoomCard from "../components/Room/RoomCard";
 import { AiOutlineDelete } from "react-icons/ai";
-import { Favorite } from "@prisma/client";
-import { removeFavoriteItem } from "./page";
-import { useSession } from 'next-auth/react';
 import { redirect } from "next/navigation";
+import { removeFavoriteItem } from "../actions/removeFavorite";
 
 
 const FavoritesClient = ({data,currentUser}:any) => {
