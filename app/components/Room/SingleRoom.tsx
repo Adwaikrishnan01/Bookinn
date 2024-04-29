@@ -3,10 +3,7 @@ import HeartButton from "../HeartButton";
 import Image from "next/image"
 import { User,Address } from "@prisma/client";
 import { Calender } from "../Calender";
-import { Form } from "react-hook-form";
 import useLoginModal from "@/app/hooks/useLoginModal";
-// import createBooking from "@/app/actions/createBooking";
-import { prisma } from "@/app/libs/prismadb";
 import axios from "../../../axios"
 import { useEffect, useState } from "react";
 

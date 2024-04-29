@@ -14,13 +14,13 @@ const SingleRoomClient: React.FC<SingleRoomProps> = ({ room, currentUser }) => {
 
     return (
         <>
-            <RoomHeader title={room?.name}
-                image={room?.imgSrc}
+            <RoomHeader title={room.name}
+                image={room.imgSrc}
                 roomId={room.id}
                 currentUser={currentUser} />
 
             <RoomBody
-                roomcount={room?.roomCount}
+                roomcount={room.roomCount}
                 bathroom={room.bathroomCount}
                 numberofBeds={room.numberofBeds}
                 address={room.address}
