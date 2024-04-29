@@ -107,7 +107,7 @@ export const RoomBody:React.FC<RoomBodyProps>=({roomcount,bathroom,numberofBeds,
         <input type="hidden" name="userId" value={userId}/>
         <Calender/><div>
           {!userId ?(<>{loginModal.onOpen()}</>)  : <button type="submit" 
-          className="w-[340px] bg-blue-600 rounded-md text-white p-1 shadow-md">Make a booking</button>}
+          className="w-[340px] bg-blue-600 rounded-md text-white p-1 shadow-md">Make a booking.</button>}
           </div>
         
         </form>
