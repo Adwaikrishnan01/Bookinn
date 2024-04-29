@@ -60,9 +60,9 @@ model Room{
   name         String  
   description  String
   petsallowed      Boolean?
-  roomCount          Int?
-  bathroomCount      Int?
-  numberofBeds       Int?
+  roomCount          Int
+  bathroomCount      Int
+  numberofBeds       Int
   imgSrc           String
   rating             Int?
   airConditioned     Boolean?
