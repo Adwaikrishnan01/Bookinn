@@ -10,7 +10,8 @@ emailVerified: string | null;
 };
 
 export type safeRoom = Omit<Room, "createdAt"> & {
-        createdAt: string; address:Address[];
+        createdAt: string; 
+        address:Address[];
       };
 
 export type Roomdata=Room
@@ -29,3 +30,29 @@ export type SafeBookings = Omit<
   endDate: string;
   room: safeRoom;
 };
+export type safeBookings= {
+  createdAt: string;
+  startDate: string;
+  endDate: string;
+  room: {
+      createdAt: string;
+      id: string;
+      address: {
+          id: string;
+          country: string;
+          state: string;
+          city: string;
+          roomId: string;
+      }[];
+      Favorite: {
+          id: string;
+          userId: string | null;
+          roomId: string | null;
+          createdAt: Date;
+      }[];
+      description: string;
+      imgSrc: string;
+      price: number;
+  };
+  totalPrice: number;
+}[]

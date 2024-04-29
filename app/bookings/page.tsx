@@ -10,7 +10,7 @@ const userBookings = async() => {
  } 
  const userId=currentUser.id;
  const userBookings=await getUserBookings(userId)
-    
+     
     if(!userBookings){
       return null
     }

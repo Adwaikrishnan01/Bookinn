@@ -16,10 +16,26 @@ export default async function getUserBookings(uid: string)
     const userBookings = await prisma.bookings.findMany({
       where: {
         userId:uid
-        },include: {
-            room: true, 
-          },
-      
+        }, select: {
+          room: {
+              select: {
+                  imgSrc: true,
+                  id: true,
+                  price: true,
+                  description: true,
+                  address: true,
+                  createdAt:true ,
+                  Favorite: {
+                    where:{
+                      userId:uid
+                    }
+                  },
+              }
+          },createdAt:true,
+          startDate:true,
+          endDate:true,
+          totalPrice:true
+      }
     });
 
     if (!userBookings) {

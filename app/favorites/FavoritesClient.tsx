@@ -2,8 +2,6 @@
 import RoomCard from "../components/Room/RoomCard";
 import { AiOutlineDelete } from "react-icons/ai";
 import { redirect } from "next/navigation";
-import { removeFavoriteItem } from "../actions/removeFavorite";
-
 
 const FavoritesClient = ({data,currentUser}:any) => {
     
@@ -23,7 +21,7 @@ const FavoritesClient = ({data,currentUser}:any) => {
                                 <RoomCard key={item?.id}
                                     data={item} />
                                     <div className="w-full bg-red-500 rounded-md mt-1 py-2 cursor-pointer hover:opacity-90" 
-                                    onClick={()=>removeFavoriteItem(item.id,currentUser.id)}>
+                                    onClick={()=>""}>
                                         <AiOutlineDelete className="mx-auto"/>
                                         </div>
                                     </div>
